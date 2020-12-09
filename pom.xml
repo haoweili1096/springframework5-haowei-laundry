@@ -14,7 +14,7 @@
     </parent>
     <groupId>haowei.springframework</groupId>
     <artifactId>springframework5-haowei-laundry</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>springframework5-haowei-laundry</name>
     <description>SpringFramework5 Haowei Laundry Project</description>
 
@@ -45,7 +45,7 @@
 
     <scm>
         <developerConnection>scm:git:git@github.com:haoweili1096/springframework5-haowei-laundry.git</developerConnection>
-        <tag>springframework5-haowei-laundry-0.0.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
 </project>
