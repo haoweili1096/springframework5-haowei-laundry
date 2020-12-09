@@ -1,6 +1,6 @@
 package haowei.springframework.springframework5haoweilaundry.model;
 
-public class Cloth {
+public class Cloth extends BaseEntity{
     private ClothType clothType;
     private Owner owner;
 
