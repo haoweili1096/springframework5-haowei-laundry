@@ -11,11 +11,11 @@ public class Cloth extends BaseEntity{
     private String color;
 
     @ManyToOne
-    @Column(name = "type_id")
+    @JoinColumn(name = "type_id")
     private ClothType clothType;
 
     @ManyToOne
-    @Column(name = "owner_id")
+    @JoinColumn(name = "owner_id")
     private Owner owner;
 
     @Column(name = "made_in")
@@ -54,5 +54,13 @@ public class Cloth extends BaseEntity{
 
     public void setMade_in(String made_in) {
         this.made_in = made_in;
+    }
+
+    public Set<Visit> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(Set<Visit> visits) {
+        this.visits = visits;
     }
 }
