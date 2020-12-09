@@ -1,9 +1,8 @@
 package haowei.springframework.springframework5haoweilaundry.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "clothes")
@@ -21,6 +20,9 @@ public class Cloth extends BaseEntity{
 
     @Column(name = "made_in")
     private String made_in;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cloth")
+    private Set<Visit> visits = new HashSet<>();
 
     public String getColor() {
         return color;
