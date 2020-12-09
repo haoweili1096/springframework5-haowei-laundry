@@ -5,6 +5,20 @@
     <title>List of Registrars</title>
 </head>
 <body>
+<!--/*@thymesVar id="registrar" type="haowei.springframework.springframework5haoweilaundry.model.Registrar"*/-->
     <h2 th:text="'List of Registrars'">Registrars List</h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="registrar : ${registrars}">
+            <td th:text="${registrar.firstName + ' ' + registrar.lastName}"></td>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>
