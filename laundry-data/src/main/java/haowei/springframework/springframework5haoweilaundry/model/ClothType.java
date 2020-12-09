@@ -1,7 +1,14 @@
 package haowei.springframework.springframework5haoweilaundry.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "types")
 public class ClothType extends BaseEntity{
-    String name;
+    @Column(name = "name")
+    private String name;
 
     public String getName() {
         return name;

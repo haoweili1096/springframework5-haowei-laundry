@@ -7,6 +7,7 @@ import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 //@MappedSuperclass: established this as a base class to JPA
+//then this class will not appear in the database
 @MappedSuperclass
 public class BaseEntity implements Serializable {
 
