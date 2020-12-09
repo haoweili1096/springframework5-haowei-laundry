@@ -97,8 +97,8 @@ public class DataLoader implements CommandLineRunner {
         ownerService.save(owner2);
 
         Owner owner3 = new Owner();
-        owner3.setFirstName("Michael");
-        owner3.setLastName("Taylor");
+        owner3.setFirstName("Albert");
+        owner3.setLastName("Mason");
         owner3.setAddress("220 S 2th Street");
         owner3.setCity("San Francisco");
         owner3.setPostal_code("58172");
