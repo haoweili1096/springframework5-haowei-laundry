@@ -160,12 +160,14 @@ public class DataLoader implements CommandLineRunner {
         Registrar registrar1 = new Registrar();
         registrar1.setFirstName("Justin");
         registrar1.setLastName("Cook");
+        registrar1.setEmployee_number("A001");
 
         registrarService.save(registrar1);
 
         Registrar registrar2 = new Registrar();
         registrar2.setFirstName("Terry");
         registrar2.setLastName("Butler");
+        registrar2.setEmployee_number("A002");
 
         registrarService.save(registrar2);
 
