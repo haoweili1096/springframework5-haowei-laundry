@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Owners List</title>
+</head>
+<body>
+    <h2>Owners</h2>
+
+    <table id="owners" class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width: 100px;">Name</th>
+            <th style="width: 100px;">Address</th>
+            <th style="width: 100px;">City</th>
+            <th style="width: 100px;">Postal_code</th>
+            <th style="width: 100px">Telephone</th>
+            <th>Clothes</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="owner : ${selections}">
+            <td>
+                <a th:href="@{/owners/__${owner.id}__}" th:text="${owner.firstName + ' ' + owner.lastName}"/>
+            </td>
+            <td th:text="${owner.address}"></td>
+            <td th:text="${owner.city}"></td>
+            <td th:text="${owner.postal_code}"></td>
+            <td th:text="${owner.telephone}"></td>
+            <td><span th:each="cloth : ${owner.clothes}" th:text="${cloth.color + ' ' + cloth.clothType + ' '} "></span></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

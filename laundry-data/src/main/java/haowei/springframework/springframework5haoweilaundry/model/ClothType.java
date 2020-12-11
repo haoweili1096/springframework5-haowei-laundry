@@ -17,4 +17,9 @@ public class ClothType extends BaseEntity{
     @Column(name = "name")
     private String name;
 
+    // solve the problem of showing "haowei.springframework.springframework5haoweilaundry.model.ClothType" on the browser
+    @Override
+    public String toString() {
+        return name;
+    }
 }

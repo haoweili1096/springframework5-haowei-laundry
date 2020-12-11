@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Owner Details</title>
+</head>
+<body>
+<!--/*@thymesVar id="owner" type="haowei.springframework.springframework5haoweilaundry.model.Owner"*/-->
+
+    <h2>Owner Information</h2>
+
+    <table class="table table-striped" th:object="${owner}">
+        <tr>
+            <th>Name</th>
+            <td><b th:text="*{firstName + ' ' + lastName}"></b></td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td th:text="*{address}" /></td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td th:text="*{city}" /></td>
+        </tr>
+        <tr>
+            <th>Postal_code</th>
+            <td th:text="*{postal_code}"></td>
+        </tr>
+        <tr>
+            <th>Telephone</th>
+            <td th:text="*{telephone}" /></td>
+        </tr>
+    </table>
+
+    <h2>Clothes and Visits</h2>
+
+    <table class="table table-striped">
+        <tr th:each="cloth : ${owner.clothes}">
+            <td valign="top">
+                <dl class="dl-horizontal">
+                    <dt>Color</dt>
+                    <dd th:text="${cloth.color}"></dd>
+                    <dt>Type</dt>
+                    <dd th:text="${cloth.clothType}"></dd>
+                    <dt>Made_In</dt>
+                    <dd th:text="${cloth.made_in}"></dd>
+                </dl>
+            </td>
+            <td valign="top">
+                <table class="table-condensed">
+                    <thread>
+                        <tr>
+                            <th>Visit Date</th>
+                            <th>Description</th>
+                        </tr>
+                    </thread>
+                    <tr th:each="visit : ${cloth.visits}">
+                        <td th:text="${#temporals.format(visit.date, 'yyyy-MM-dd')}"></td>
+                        <td th:text="${visit.description}"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
