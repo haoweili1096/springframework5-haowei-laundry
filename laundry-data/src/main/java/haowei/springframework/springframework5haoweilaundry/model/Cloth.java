@@ -10,7 +10,6 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "clothes")
 public class Cloth extends BaseEntity{
@@ -31,4 +30,17 @@ public class Cloth extends BaseEntity{
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cloth")
     private Set<Visit> visits = new HashSet<>();
 
+    @Builder
+
+    public Cloth(Long id, String color, ClothType clothType, Owner owner, String made_in, Set<Visit> visits) {
+        super(id);
+        this.color = color;
+        this.clothType = clothType;
+        this.owner = owner;
+        this.made_in = made_in;
+
+        if(visits == null || visits.size() > 0){
+            this.visits = visits;
+        }
+    }
 }

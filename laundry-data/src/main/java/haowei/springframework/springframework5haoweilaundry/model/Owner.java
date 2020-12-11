@@ -39,4 +39,5 @@ public class Owner extends Person{
         this.telephone = telephone;
         this.clothes = clothes;
     }
+
 }

@@ -10,7 +10,6 @@ import javax.persistence.Table;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "types")
 public class ClothType extends BaseEntity{
@@ -21,5 +20,12 @@ public class ClothType extends BaseEntity{
     @Override
     public String toString() {
         return name;
+    }
+
+    @Builder
+
+    public ClothType(Long id, String name) {
+        super(id);
+        this.name = name;
     }
 }

@@ -34,6 +34,8 @@
 
     <a th:href="@{{id}/edit(id=${owner.id})}" class="btn btn-default">Edit Owner</a>
 
+    <a th:href="@{{id}/clothes/new(id=${owner.id})}" class="btn btn-default">Add New Cloth</a>
+
     <br />
     <br />
     <br />
@@ -62,6 +64,10 @@
                     <tr th:each="visit : ${cloth.visits}">
                         <td th:text="${#temporals.format(visit.date, 'yyyy-MM-dd')}"></td>
                         <td th:text="${visit.description}"></td>
+                    </tr>
+                    <tr>
+                        <td><a th:href="@{{ownerId}/clothes/{clothId}/edit(ownerId=${owner.id},clothId=${cloth.id})}">Edit Cloth</a></td>
+                        <td><a th:href="@{{ownerId}/clothes/{clothId}/visits/new(ownerId=${owner.id},clothId=${cloth.id})}">Add Visit</a></td>
                     </tr>
                 </table>
             </td>
