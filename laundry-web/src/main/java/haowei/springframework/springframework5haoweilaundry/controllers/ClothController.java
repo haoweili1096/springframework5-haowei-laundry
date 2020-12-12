@@ -37,7 +37,7 @@ public class ClothController {
     }
 
     @ModelAttribute("owner")
-    public Owner findOwner(@PathVariable long ownerId){
+    public Owner findOwner(@PathVariable("ownerId") Long ownerId){
         return ownerService.findById(ownerId);
     }
 
@@ -71,7 +71,7 @@ public class ClothController {
     }
 
     @GetMapping("/clothes/{clothId}/edit")
-    public String initUpdateClothForm(Model model, @PathVariable long clothId){
+    public String initUpdateClothForm(Model model, @PathVariable Long clothId){
         model.addAttribute("cloth", clothService.findById(clothId));
         return VIEWS_CLOTHES_CREATE_OR_UPDATE_FORM;
     }

@@ -31,7 +31,6 @@ public class Cloth extends BaseEntity{
     private Set<Visit> visits = new HashSet<>();
 
     @Builder
-
     public Cloth(Long id, String color, ClothType clothType, Owner owner, String made_in, Set<Visit> visits) {
         super(id);
         this.color = color;

@@ -45,8 +45,8 @@ public class OwnerControllerTest {
     @BeforeEach
     void setUp(){
         owners = new HashSet<>();
-        owners.add(Owner.builder().id(1l).build());
-        owners.add(Owner.builder().id(2l).build());
+        owners.add(Owner.builder().id(1L).build());
+        owners.add(Owner.builder().id(2L).build());
 
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
@@ -58,13 +58,13 @@ public class OwnerControllerTest {
                 .andExpect(view().name("owners/findOwners"))
                 .andExpect(model().attributeExists("owner"));
 
-        verifyNoInteractions(ownerService);
+        verifyZeroInteractions(ownerService);
     }
 
     @Test
     void processFindFormReturnMany() throws Exception{
         when(ownerService.findAllByLastNameLike(anyString()))
-                .thenReturn(Arrays.asList(Owner.builder().id(1l).build(), Owner.builder().id(2l).build()));
+                .thenReturn(Arrays.asList(Owner.builder().id(1L).build(), Owner.builder().id(2l).build()));
 
         mockMvc.perform(get("/owners"))
                 .andExpect(status().isOk())
@@ -75,7 +75,7 @@ public class OwnerControllerTest {
     @Test
     void processFindFormReturnOne() throws Exception{
         when(ownerService.findAllByLastNameLike(anyString()))
-                .thenReturn(Arrays.asList(Owner.builder().id(1l).build()));
+                .thenReturn(Arrays.asList(Owner.builder().id(1L).build()));
 
         mockMvc.perform(get("/owners"))
                 .andExpect(status().is3xxRedirection())
@@ -85,7 +85,7 @@ public class OwnerControllerTest {
     @Test
     void processFindFormInputEmptyReturnMany() throws Exception{
         when(ownerService.findAllByLastNameLike(anyString()))
-                .thenReturn(Arrays.asList(Owner.builder().id(1l).build(), Owner.builder().id(2l).build()));
+                .thenReturn(Arrays.asList(Owner.builder().id(1L).build(), Owner.builder().id(2l).build()));
 
         mockMvc.perform(get("/owners").param("lastName", ""))
                 .andExpect(status().isOk())
@@ -106,12 +106,12 @@ public class OwnerControllerTest {
     @Test
     void showOwner() throws Exception{
         when(ownerService.findById(anyLong()))
-                .thenReturn(Owner.builder().id(1l).build());
+                .thenReturn(Owner.builder().id(1L).build());
 
         mockMvc.perform(get("/owners/123"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("owners/ownerDetails"))
-                .andExpect(model().attribute("owner", hasProperty("id", is(1l))));
+                .andExpect(model().attribute("owner", hasProperty("id", is(1L))));
     }
 
     @Test
@@ -121,13 +121,13 @@ public class OwnerControllerTest {
                 .andExpect(view().name("owners/createOrUpdateOwnerForm"))
                 .andExpect(model().attributeExists("owner"));
 
-        verifyNoInteractions(ownerService);
+        verifyZeroInteractions(ownerService);
     }
 
     @Test
     void processCreationForm() throws Exception{
         when(ownerService.save(ArgumentMatchers.any()))
-                .thenReturn(Owner.builder().id(1l).build());
+                .thenReturn(Owner.builder().id(1L).build());
 
         mockMvc.perform(post("/owners/new"))
                 .andExpect(status().is3xxRedirection())
@@ -140,7 +140,7 @@ public class OwnerControllerTest {
     @Test
     void initUpdateOwnerForm() throws Exception{
         when(ownerService.findById(anyLong()))
-                .thenReturn(Owner.builder().id(1l).build());
+                .thenReturn(Owner.builder().id(1L).build());
 
         mockMvc.perform(get("/owners/1/edit"))
                 .andExpect(status().isOk())
@@ -151,7 +151,7 @@ public class OwnerControllerTest {
     @Test
     void processUpdateOwnerForm() throws Exception{
         when(ownerService.save(ArgumentMatchers.any()))
-                .thenReturn(Owner.builder().id(1l).build());
+                .thenReturn(Owner.builder().id(1L).build());
 
         mockMvc.perform(post("/owners/1/edit"))
                 .andExpect(status().is3xxRedirection())

@@ -23,7 +23,6 @@ public class ClothType extends BaseEntity{
     }
 
     @Builder
-
     public ClothType(Long id, String name) {
         super(id);
         this.name = name;
