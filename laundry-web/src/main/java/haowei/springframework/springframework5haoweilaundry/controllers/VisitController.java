@@ -14,6 +14,7 @@ import java.beans.PropertyEditorSupport;
 import java.time.LocalDate;
 
 @Controller
+@RequestMapping("/owners/{ownerId}/clothes/{clothId}")
 public class VisitController {
     public static final String CREATE_OR_UPDATE_VISIT_FORM = "visits/createOrUpdateVisitForm";
     private final VisitService visitService;
@@ -36,29 +37,50 @@ public class VisitController {
         });
     }
 
-    // Make sure we always have fresh data
-    // Since we do not use the session scope, make sure that Cloth object always has an id
-    @ModelAttribute("visit")
-    public Visit loadClothWithVisit(@PathVariable("clothId") Long clothId, Model model){
-        Cloth cloth = clothService.findById(clothId);
-        model.addAttribute("cloth", cloth);
-        Visit visit = new Visit();
-        visit.setCloth(cloth);
-        cloth.getVisits().add(visit);
-        return visit;
+    @ModelAttribute("cloth")
+    public Cloth findCloth(@PathVariable("clothId") Long clothId){
+        return clothService.findById(clothId);
     }
 
-    @GetMapping("/owners/{ownerId}/clothes/{clothId}/visits/new")
+    @GetMapping("/visits/new")
     public String initCreationForm(@PathVariable("clothId") Long clothId, Model model){
+        Visit visit = new Visit();
+        Cloth cloth = clothService.findById(clothId);
+        visit.setCloth(cloth);
+        cloth.getVisits().add(visit);
+        model.addAttribute("visit", visit);
         return CREATE_OR_UPDATE_VISIT_FORM;
     }
 
-    @PostMapping("/owners/{ownerId}/clothes/{clothId}/visits/new")
-    public String processCreationForm(Visit visit, BindingResult result){
+    @PostMapping("/visits/new")
+    public String processCreationForm(Cloth cloth, Visit visit, BindingResult result, Model model){
+        visit.setCloth(cloth);
+        cloth.getVisits().add(visit);
         if(result.hasErrors()){
+            model.addAttribute("visit", visit);
             return CREATE_OR_UPDATE_VISIT_FORM;
         }
         else{
+            visitService.save(visit);
+            return "redirect:/owners/{ownerId}";
+        }
+    }
+
+    @GetMapping("/visits/{visitId}/edit")
+    public String initUpdateForm(@PathVariable("visitId") Long visitId, Model model){
+        model.addAttribute("visit", visitService.findById(visitId));
+        return CREATE_OR_UPDATE_VISIT_FORM;
+    }
+
+    @PostMapping("/visits/{visitId}/edit")
+    public String processUpdateForm(@PathVariable Long visitId, Model model, Visit visit, Cloth cloth, BindingResult result){
+        visit.setCloth(cloth);
+        if(result.hasErrors()){
+            model.addAttribute("visit", visit);
+            return CREATE_OR_UPDATE_VISIT_FORM;
+        }
+        else{
+            visit.setId(visitId);
             visitService.save(visit);
             return "redirect:/owners/{ownerId}";
         }
