@@ -67,13 +67,13 @@ public class VisitController {
     }
 
     @GetMapping("/visits/{visitId}/edit")
-    public String initUpdateForm(@PathVariable("visitId") Long visitId, Model model){
+    public String initUpdateVisitForm(@PathVariable("visitId") Long visitId, Model model){
         model.addAttribute("visit", visitService.findById(visitId));
         return CREATE_OR_UPDATE_VISIT_FORM;
     }
 
     @PostMapping("/visits/{visitId}/edit")
-    public String processUpdateForm(@PathVariable Long visitId, Model model, Visit visit, Cloth cloth, BindingResult result){
+    public String processUpdateVisitForm(@PathVariable Long visitId, Model model, Visit visit, Cloth cloth, BindingResult result){
         visit.setCloth(cloth);
         if(result.hasErrors()){
             model.addAttribute("visit", visit);

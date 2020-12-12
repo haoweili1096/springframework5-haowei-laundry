@@ -9,7 +9,6 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "visits")
 public class Visit extends BaseEntity{
@@ -23,4 +22,12 @@ public class Visit extends BaseEntity{
     @JoinColumn(name = "cloth_id")
     private Cloth cloth; //one cloth can come to wash many times
 
+    @Builder
+
+    public Visit(Long id, LocalDate date, String description, Cloth cloth) {
+        super(id);
+        this.date = date;
+        this.description = description;
+        this.cloth = cloth;
+    }
 }

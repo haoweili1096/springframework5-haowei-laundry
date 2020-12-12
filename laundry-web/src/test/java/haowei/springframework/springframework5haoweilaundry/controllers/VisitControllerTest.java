@@ -1,6 +1,7 @@
 package haowei.springframework.springframework5haoweilaundry.controllers;
 
 import haowei.springframework.springframework5haoweilaundry.model.Cloth;
+import haowei.springframework.springframework5haoweilaundry.model.Visit;
 import haowei.springframework.springframework5haoweilaundry.services.ClothService;
 import haowei.springframework.springframework5haoweilaundry.services.VisitService;
 import org.junit.jupiter.api.BeforeEach;
@@ -60,6 +61,29 @@ public class VisitControllerTest {
         mockMvc.perform(post("/owners/1/clothes/1/visits/new"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(model().attributeExists("cloth"))
+                .andExpect(view().name("redirect:/owners/{ownerId}"));
+
+        verify(visitService).save(any());
+    }
+
+    @Test
+    void initUpdateVisitForm() throws Exception{
+        when(clothService.findById(anyLong())).thenReturn(cloth);
+        when(visitService.findById(anyLong())).thenReturn(Visit.builder().id(1L).build());
+
+        mockMvc.perform(get("/owners/1/clothes/1/visits/1/edit"))
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("visit"))
+                .andExpect(model().attributeExists("cloth"))
+                .andExpect(view().name("visits/createOrUpdateVisitForm"));
+    }
+
+    @Test
+    void processUpdateVisitForm() throws Exception{
+        when(clothService.findById(anyLong())).thenReturn(cloth);
+
+        mockMvc.perform(post("/owners/1/clothes/1/visits/1/edit"))
+                .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/owners/{ownerId}"));
 
         verify(visitService).save(any());
