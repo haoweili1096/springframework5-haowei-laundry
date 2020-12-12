@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'home')}">
 <head>
     <meta charset="UTF-8">
     <title>Laundry Index</title>
 </head>
 <body>
-    <h2 th:text="'Laundry'">Index Page</h2>
+    <h2 th:text="#{welcome}">Welcome</h2>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <img src="../static/resources/images/laundry.png" th:src="@{/resources/images/laundry.png}"/>
+        </div>
+    </div>
 </body>
 </html>

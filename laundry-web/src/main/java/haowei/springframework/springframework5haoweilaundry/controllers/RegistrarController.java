@@ -14,7 +14,7 @@ public class RegistrarController {
         this.registrarService = registrarService;
     }
 
-    @RequestMapping({"/registrars", "/registrars/index", "registrars/index.html"})
+    @RequestMapping({"/registrars", "/registrars.html", "/registrars/index", "registrars/index.html"})
     public String registrarsList(Model model){
         model.addAttribute("registrars", registrarService.findAll());
         return "registrars/index";
