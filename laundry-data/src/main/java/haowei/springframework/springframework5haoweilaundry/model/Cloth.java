@@ -38,7 +38,7 @@ public class Cloth extends BaseEntity{
         this.owner = owner;
         this.made_in = made_in;
 
-        if(visits == null || visits.size() > 0){
+        if(visits != null){
             this.visits = visits;
         }
     }
