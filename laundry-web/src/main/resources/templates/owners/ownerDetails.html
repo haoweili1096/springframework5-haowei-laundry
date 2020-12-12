@@ -8,49 +8,49 @@
 <body>
 <!--/*@thymesVar id="owner" type="haowei.springframework.springframework5haoweilaundry.model.Owner"*/-->
 
-    <h2>Owner Information</h2>
+    <h2 th:text="#{OwnerInformation}">Owner Information</h2>
 
     <table class="table table-striped" th:object="${owner}">
         <tr>
-            <th>Name</th>
+            <th th:text="#{Name}">Name</th>
             <td><b th:text="*{firstName + ' ' + lastName}"></b></td>
         </tr>
         <tr>
-            <th>Address</th>
+            <th th:text="#{Address}">Address</th>
             <td th:text="*{address}"></td>
         </tr>
         <tr>
-            <th>City</th>
+            <th th:text="#{City}">City</th>
             <td th:text="*{city}"></td>
         </tr>
         <tr>
-            <th>Postal_code</th>
+            <th th:text="#{PostalCode}">Postal Code</th>
             <td th:text="*{postal_code}"></td>
         </tr>
         <tr>
-            <th>Telephone</th>
+            <th th:text="#{Telephone}">Telephone</th>
             <td th:text="*{telephone}"></td>
         </tr>
     </table>
 
-    <a th:href="@{{id}/edit(id=${owner.id})}" class="btn btn-default">Edit Owner</a>
+    <a th:href="@{{id}/edit(id=${owner.id})}" class="btn btn-default" th:text="#{EditOwner}">Edit Owner</a>
 
-    <a th:href="@{{id}/clothes/new(id=${owner.id})}" class="btn btn-default">Add New Cloth</a>
+    <a th:href="@{{id}/clothes/new(id=${owner.id})}" class="btn btn-default" th:text="#{AddNewCloth}">Add New Cloth</a>
 
     <br />
     <br />
     <br />
-    <h2>Clothes and Visits</h2>
+    <h2 th:text="#{ClothesAndVisits}">Clothes and Visits</h2>
 
     <table class="table table-striped">
         <tr th:each="cloth : ${owner.clothes}">
             <td valign="top">
                 <dl class="dl-horizontal">
-                    <dt>Color</dt>
+                    <dt th:text="#{Color}">Color</dt>
                     <dd th:text="${cloth.color}"></dd>
-                    <dt>Type</dt>
+                    <dt th:text="#{Type}">Type</dt>
                     <dd th:text="${cloth.clothType}"></dd>
-                    <dt>Made_In</dt>
+                    <dt th:text="#{MadeIn}">Made In</dt>
                     <dd th:text="${cloth.made_in}"></dd>
                 </dl>
             </td>
@@ -58,18 +58,18 @@
                 <table class="table-condensed">
                     <thread>
                         <tr>
-                            <th>Visit Date</th>
-                            <th>Description</th>
+                            <th th:text="#{VisitDate}">Visit Date</th>
+                            <th th:text="#{Description}">Description</th>
                         </tr>
                     </thread>
                     <tr th:each="visit : ${cloth.visits}">
                         <td th:text="${#temporals.format(visit.date, 'yyyy-MM-dd')}"></td>
                         <td th:text="${visit.description}"></td>
-                        <td><a th:href="@{{ownerId}/clothes/{clothId}/visits/{visitId}/edit(ownerId=${owner.id},clothId=${cloth.id},visitId=${visit.id})}">Edit Visit</a></td>
+                        <td><a th:href="@{{ownerId}/clothes/{clothId}/visits/{visitId}/edit(ownerId=${owner.id},clothId=${cloth.id},visitId=${visit.id})}" th:text="#{EditVisit}">Edit Visit</a></td>
                     </tr>
                     <tr>
-                        <td><a th:href="@{{ownerId}/clothes/{clothId}/edit(ownerId=${owner.id},clothId=${cloth.id})}">Edit Cloth</a></td>
-                        <td><a th:href="@{{ownerId}/clothes/{clothId}/visits/new(ownerId=${owner.id},clothId=${cloth.id})}">Add Visit</a></td>
+                        <td><a th:href="@{{ownerId}/clothes/{clothId}/edit(ownerId=${owner.id},clothId=${cloth.id})}" th:text="#{EditCloth}">Edit Cloth</a></td>
+                        <td><a th:href="@{{ownerId}/clothes/{clothId}/visits/new(ownerId=${owner.id},clothId=${cloth.id})}" th:text="#{AddVisit}">Add Visit</a></td>
                     </tr>
                 </table>
             </td>

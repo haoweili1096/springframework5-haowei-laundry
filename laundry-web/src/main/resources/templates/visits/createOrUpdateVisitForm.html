@@ -6,18 +6,16 @@
     <title>Add or Update Visit</title>
 </head>
 <body>
-    <h2>
-        <th:block th:if="${visit['new']}">New </th:block>Visit
-    </h2>
+    <h2 th:with="text=${visit['new']} ? #{NewVisit} : #{Visit}">New Visit</h2>
 
-    <b>Cloth</b>
+    <b th:text="#{Cloth}">Cloth</b>
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Color</th>
-            <th>Made_In</th>
-            <th>Type</th>
-            <th>Owner</th>
+            <th th:text="#{Color}">Color</th>
+            <th th:text="#{MadeIn}">Made In</th>
+            <th th:text="#{Type}">Type</th>
+            <th th:text="#{Owner}">Owner</th>
         </tr>
         </thead>
         <tr>
@@ -30,25 +28,25 @@
 
     <form th:object="${visit}" class="form-horizontal" method="post">
         <div class="form-group has-feedback">
-            <input th:replace="~{fragments/inputField :: input ('Date', 'date', 'date')}"  />
-            <input th:replace="~{fragments/inputField :: input ('Description', 'description', 'text')}" />
+            <input th:replace="~{fragments/inputField :: input (#{Date}, 'date', 'date')}"  />
+            <input th:replace="~{fragments/inputField :: input (#{Description}, 'description', 'text')}" />
         </div>
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <input type="hidden" name="clothId" th:value="${cloth.id}" />
-                <button th:with="text=${visit['new']} ? 'Add Visit' : 'Update Visit'"
+                <button th:with="text=${visit['new']} ? #{AddVisit} : #{UpdateVisit}"
                         class="btn btn-default" type="submit" th:text="${text}">Add Visit</button>
             </div>
         </div>
     </form>
 
     <br />
-    <b>Previous Visits</b>
+    <b th:text="#{PreviousVisits}">Previous Visits</b>
     <table class="table table-striped">
         <tr>
-            <th>Date</th>
-            <th>Description</th>
+            <th th:text="#{Date}">Date</th>
+            <th th:text="#{Description}">Description</th>
         </tr>
         <tr th:if="${!visit['new']}" th:each="visit : ${cloth.visits}">
             <td th:text="${#temporals.format(visit.date, 'yyyy-MM-dd')}" /></td>

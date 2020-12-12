@@ -43,19 +43,19 @@
                     </a>
                 </li>
 
-                <li th:replace="::menuItem ('/','home','home page','Home')">
+                <li th:replace="::menuItem ('/','home','home page',#{Home})">
                     <span>Home</span>
                 </li>
 
-                <li th:replace="::menuItem ('/owners/find','owners','find owners','Find owners')">
+                <li th:replace="::menuItem ('/owners/find','owners','find owners',#{FindOwners})">
                     <span>Find owners</span>
                 </li>
 
-                <li th:replace="::menuItem ('/registrars','registrars','registrars','Registrars')">
+                <li th:replace="::menuItem ('/registrars','registrars','registrars',#{Registrars})">
                     <span>Registrars</span>
                 </li>
 
-                <li th:replace="::menuItem ('/oups','error','trigger a RuntimeException to see how it is handled','Error')">
+                <li th:replace="::menuItem ('/oups','error','trigger a RuntimeException to see how it is handled',#{Error})">
                     <span>Error</span>
                 </li>
 

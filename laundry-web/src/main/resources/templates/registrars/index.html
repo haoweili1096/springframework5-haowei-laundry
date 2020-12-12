@@ -7,17 +7,19 @@
 </head>
 <body>
 <!--/*@thymesVar id="registrar" type="haowei.springframework.springframework5haoweilaundry.model.Registrar"*/-->
-    <h2 th:text="'List of Registrars'">Registrars List</h2>
+    <h2 th:text="#{ListofRegistrars}">Registrars List</h2>
 
     <table id="registrars" class="table table-striped">
         <thead>
         <tr>
-            <th>Name</th>
+            <th th:text="#{Name}">Name</th>
+            <th th:text="#{EmployeeNumber}">Employee Number</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="registrar : ${registrars}">
             <td th:text="${registrar.firstName + ' ' + registrar.lastName}"></td>
+            <td th:text="${registrar.employee_number}"></td>
         </tr>
         </tbody>
     </table>
