@@ -3,11 +3,13 @@ package haowei.springframework.springframework5haoweilaundry.bootstrap;
 import haowei.springframework.springframework5haoweilaundry.model.*;
 import haowei.springframework.springframework5haoweilaundry.services.*;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
 @Component
+@Profile("default")
 public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final RegistrarService registrarService;
@@ -25,11 +27,12 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        int count = clothTypeService.findAll().size();
-
-        if(count == 0){
-            loadData();
-        }
+//        int count = clothTypeService.findAll().size();
+//
+//        if(count == 0){
+//            loadData();
+//        }
+        loadData();
     }
 
     private void loadData(){
