@@ -9,6 +9,13 @@
 
     <artifactId>laundry-web</artifactId>
 
+    <properties>
+        <!-- Web dependencies -->
+        <webjars-bootstrap.version>3.3.7-1</webjars-bootstrap.version>
+        <webjars-jquery-ui.version>1.11.4</webjars-jquery-ui.version>
+        <webjars-jquery.version>1.11.1</webjars-jquery.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <artifactId>laundry-data</artifactId>
@@ -29,21 +36,27 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- webjars -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator-core</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
-            <version>1.11.1</version>
+            <version>${webjars-jquery.version}</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery-ui</artifactId>
-            <version>1.11.4</version>
+            <version>${webjars-jquery-ui.version}</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
-            <version>3.3.7-1</version>
+            <version>${webjars-bootstrap.version}</version>
         </dependency>
+        <!-- end of webjars -->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

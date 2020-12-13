@@ -7,6 +7,12 @@
 </head>
 <body>
     <h2 th:text="#{welcome}">Welcome</h2>
+    <span th:text="#{language}"></span>:
+    <select id="locales" onchange="window.location.replace('?lang=' + this.value)">
+        <option value=""></option>
+        <option value="en" th:text="#{english}"></option>
+        <option value="de" th:text="#{germany}"></option>
+    </select>
 
     <div class="row">
         <div class="col-md-12 text-center">
@@ -14,4 +20,6 @@
         </div>
     </div>
 </body>
+
 </html>
+
