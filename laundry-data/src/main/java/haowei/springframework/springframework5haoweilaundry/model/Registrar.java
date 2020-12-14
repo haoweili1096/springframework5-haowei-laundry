@@ -13,13 +13,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "registrars")
 public class Registrar extends Person{
-    @Column(name = "employee_number")
-    private String employee_number;
+    @Column(name = "job_number")
+    private String job_number;
 
     @Builder
-
-    public Registrar(Long id, String firstName, String lastName, String employee_number) {
+    public Registrar(Long id, String firstName, String lastName, String job_number) {
         super(id, firstName, lastName);
-        this.employee_number = employee_number;
+        this.job_number = job_number;
     }
 }

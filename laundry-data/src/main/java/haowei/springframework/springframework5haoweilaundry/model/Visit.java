@@ -22,12 +22,15 @@ public class Visit extends BaseEntity{
     @JoinColumn(name = "cloth_id")
     private Cloth cloth; //one cloth can come to wash many times
 
-    @Builder
+    @Column(name = "registrar_job_number")
+    private String registrar_job_number;
 
-    public Visit(Long id, LocalDate date, String description, Cloth cloth) {
+    @Builder
+    public Visit(Long id, LocalDate date, String description, Cloth cloth, String registrar_job_number) {
         super(id);
         this.date = date;
         this.description = description;
         this.cloth = cloth;
+        this.registrar_job_number = registrar_job_number;
     }
 }

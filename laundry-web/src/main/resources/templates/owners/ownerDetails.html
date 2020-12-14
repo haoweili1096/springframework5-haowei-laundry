@@ -60,11 +60,13 @@
                         <tr>
                             <th th:text="#{VisitDate}">Visit Date</th>
                             <th th:text="#{Description}">Description</th>
+                            <th th:text="#{Registrar}">Registrar</th>
                         </tr>
                     </thread>
                     <tr th:each="visit : ${cloth.visits}">
                         <td th:text="${#temporals.format(visit.date, 'yyyy-MM-dd')}"></td>
                         <td th:text="${visit.description}"></td>
+                        <td th:text="${visit.registrar_job_number}"></td>
                         <td><a th:href="@{{ownerId}/clothes/{clothId}/visits/{visitId}/edit(ownerId=${owner.id},clothId=${cloth.id},visitId=${visit.id})}" th:text="#{EditVisit}">Edit Visit</a></td>
                     </tr>
                     <tr>

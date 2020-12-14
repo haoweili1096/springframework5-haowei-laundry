@@ -19,7 +19,7 @@
         <tbody>
         <tr th:each="registrar : ${registrars}">
             <td th:text="${registrar.firstName + ' ' + registrar.lastName}"></td>
-            <td th:text="${registrar.employee_number}"></td>
+            <td th:text="${registrar.job_number}"></td>
             <td><a th:href="@{registrars/{registrarId}/edit(registrarId=${registrar.id})}" th:text="#{EditRegistrar}">Edit Registrar</a></td>
         </tr>
         </tbody>

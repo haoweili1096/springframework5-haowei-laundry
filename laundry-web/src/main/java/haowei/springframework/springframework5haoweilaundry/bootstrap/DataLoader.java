@@ -58,6 +58,22 @@ public class DataLoader implements CommandLineRunner {
 
         System.out.println("Loaded ClothTypes...");
 
+        Registrar registrar1 = new Registrar();
+        registrar1.setFirstName("Justin");
+        registrar1.setLastName("Cook");
+        registrar1.setJob_number("A001");
+
+        registrarService.save(registrar1);
+
+        Registrar registrar2 = new Registrar();
+        registrar2.setFirstName("Terry");
+        registrar2.setLastName("Butler");
+        registrar2.setJob_number("A002");
+
+        registrarService.save(registrar2);
+
+        System.out.println("Loaded Registrars...");
+
         Owner owner1 = new Owner();
         owner1.setFirstName("John");
         owner1.setLastName("Smith");
@@ -127,6 +143,7 @@ public class DataLoader implements CommandLineRunner {
         owner1_cloth1_visit.setCloth(cloth1);
         owner1_cloth1_visit.setDate(LocalDate.now());
         owner1_cloth1_visit.setDescription("Needs Deep Clean");
+        owner1_cloth1_visit.setRegistrar_job_number("A001");
 
         visitService.save(owner1_cloth1_visit);
 
@@ -134,6 +151,7 @@ public class DataLoader implements CommandLineRunner {
         owner1_cloth2_visit.setCloth(cloth2);
         owner1_cloth2_visit.setDate(LocalDate.now());
         owner1_cloth2_visit.setDescription("Needs Dry Clean");
+        owner1_cloth2_visit.setRegistrar_job_number("A001");
 
         visitService.save(owner1_cloth2_visit);
 
@@ -141,6 +159,7 @@ public class DataLoader implements CommandLineRunner {
         owner2_cloth3_visit.setCloth(cloth3);
         owner2_cloth3_visit.setDate(LocalDate.now());
         owner2_cloth3_visit.setDescription("Stained");
+        owner2_cloth3_visit.setRegistrar_job_number("A002");
 
         visitService.save(owner2_cloth3_visit);
 
@@ -148,6 +167,7 @@ public class DataLoader implements CommandLineRunner {
         owner3_cloth4_visit.setCloth(cloth4);
         owner3_cloth4_visit.setDate(LocalDate.now());
         owner3_cloth4_visit.setDescription("Needs Ironing");
+        owner3_cloth4_visit.setRegistrar_job_number("A001");
 
         visitService.save(owner3_cloth4_visit);
 
@@ -155,26 +175,11 @@ public class DataLoader implements CommandLineRunner {
         owner3_cloth5_visit.setCloth(cloth5);
         owner3_cloth5_visit.setDate(LocalDate.now());
         owner3_cloth5_visit.setDescription("Needs Water Clean and Dry");
+        owner3_cloth5_visit.setRegistrar_job_number("A002");
 
         visitService.save(owner3_cloth5_visit);
 
         System.out.println("Loaded Owners...");
-
-        Registrar registrar1 = new Registrar();
-        registrar1.setFirstName("Justin");
-        registrar1.setLastName("Cook");
-        registrar1.setEmployee_number("A001");
-
-        registrarService.save(registrar1);
-
-        Registrar registrar2 = new Registrar();
-        registrar2.setFirstName("Terry");
-        registrar2.setLastName("Butler");
-        registrar2.setEmployee_number("A002");
-
-        registrarService.save(registrar2);
-
-        System.out.println("Loaded Registrars...");
 
     }
 }
