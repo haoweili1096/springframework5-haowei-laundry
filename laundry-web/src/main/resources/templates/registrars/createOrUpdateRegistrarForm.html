@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'registrars')}">
+<head>
+    <meta charset="UTF-8">
+    <title>Add or Update Registrar</title>
+</head>
+<body>
+<h2 th:text="#{Registrar}">Registrar</h2>
+
+<form th:object="${registrar}" class="form-horizontal" id="add-registrar-form" method="post">
+    <div class="form-group has-feedback">
+        <input
+                th:replace="~{fragments/inputField :: input (#{FirstName}, 'firstName', 'text')}" />
+        <input
+                th:replace="~{fragments/inputField :: input (#{LastName}, 'lastName', 'text')}" />
+        <input
+                th:replace="~{fragments/inputField :: input (#{EmployeeNumber}, 'employee_number', 'text')}" />
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button
+                    th:with="text=${registrar['new']} ? #{AddRegistrar} : #{UpdateRegistrar}"
+                    class="btn btn-default" type="submit" th:text="${text}">Add
+                Registrar</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

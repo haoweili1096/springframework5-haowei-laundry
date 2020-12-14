@@ -10,10 +10,16 @@ import javax.persistence.Table;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "registrars")
 public class Registrar extends Person{
     @Column(name = "employee_number")
     private String employee_number;
+
+    @Builder
+
+    public Registrar(Long id, String firstName, String lastName, String employee_number) {
+        super(id, firstName, lastName);
+        this.employee_number = employee_number;
+    }
 }
